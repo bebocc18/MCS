@@ -1,0 +1,19 @@
+#!/usr/bin/python
+import requests
+import socket
+import threading
+import logging
+import RPi.GPIO as GPIO
+# change this to the values from MCS web console
+DEVICE_INFO = {
+    'device_id' : 'DC0Nh0I0',
+    'device_key' : 'o0I2fTd7c9eLRy0O'
+}
+
+# change 'INFO' to 'WARNING' to filter info messages
+logging.basicConfig(level='INFO')
+
+heartBeatTask = None
+
+def establishCommandChannel():
+    # Query command server's IP & port
